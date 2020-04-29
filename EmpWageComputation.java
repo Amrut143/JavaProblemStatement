@@ -1,79 +1,76 @@
 /**
-*Employee wage computation program
+*Employee Wage Computation Program
+*calculated wages for a month
 *@author:Amrut
 */
 import java.util.Random;
-public class EmpWageComputation 
-{
-	//main method
-	public static void main(String[] args) 
-	{
-		int attend;
-		System.out.println("Welcome to employee wage computation");
 
-		//instantiating EmpUtil class
-		EmpUtil eu=new EmpUtil();
-		Random ran=new Random();
-		attend=ran.nextInt(2);
-
-		//calling checkAttendance method
-	  	eu.checkAttendance(attend);
+class EmpWageComputation{
+      public static void main(String []s){
+	int empType;
+	int dailyWage;
+	int monthlyWage=0;
+	int workingHrs;
+        System.out.println("Welcome to Employee Wage Computation Program");
+	EmpUtil eu = new EmpUtil();
+	Random ran = new Random();
+	empType = ran.nextInt(2);
+	//Storing the empHr returned in the variable workingHrs
+	workingHrs = eu.getEmpType(empType);
+	//Storing the daily wage in the variable DailyWage
+	dailyWage = eu.getDailyWage(workingHrs);
+	//getting monthly wage  
+        for (int i=1;i<=20;i++){
+            monthlyWage += eu.getMonthlyWage(workingHrs,i);
 	}
+        System.out.println("Employee monthy wage is: "+monthlyWage);
+      }
 }
+///Employee utility class
+class EmpUtil{
+int salary;
+int attendance;
+final int wagePerHr=20;
+int empHr;
 
-//Employee utility class
-class EmpUtil
-{
-	int attendance;
-	double salary;
-	final int wagePerHr=20;
-	int empHr;
+      //method to get employee is part time or full time
+      public int getEmpType(int type){
+       if(type==0){
+          System.out.println("FULL TIME EMPLOYEE");
+          empHr = 8;
+          return empHr;
+       }
+       else{
+          System.out.println("PART TIME EMPLOYEE");
+          empHr = 4;
+          return empHr;
+       }
+	  }
 
-	//method to check employee attendance
-	public void checkAttendance(int attendance)
-	{
-		this.attendance = attendance;
-		switch(this.attendance)
-		{
-			case 0:
-			System.out.println("Employee is present");
-			empDailyWage();
-			break;
-
-			case 1:
-			System.out.println("Employee is absent");
-			salary=0;
-			System.out.println("Employee wage is::"+salary);
-			break;
+      //method to get employee monthly wage
+      public int getMonthlyWage(int Hour , int day)
+		  {
+			int status;
+			Random ran = new Random();
+			status = ran.nextInt(2);
+				if(status==0)
+					{
+						System.out.println("Day "+day+":Employee Present");					
+      					salary=wagePerHr*Hour;
+      					return salary;
+					}
+				else
+					{
+						System.out.println("Day "+day+": Employee Absent");
+						salary=0;																
+						return salary;
+					}
+			}
+      //method to return employee daily wages
+      public int getDailyWage(int Hour)
+		  {
+			int wage;
+			wage=wagePerHr*Hour;
+			return wage;
 		}
-	}
-	
-	//method to calculate employee daily wage
-	public void empDailyWage()
-	{
-		int status;
-		Random ran=new Random();
-		status=ran.nextInt(2);
-		//call emptype method
-		empType(status);;
-		salary=wagePerHr*empHr;
-		System.out.println("Employee daily wage is::"+salary);
-		
-	}
-
-//method to find employee type
-	public void empType(int type)
-	{
-		switch(type)
-		{
-			case 0:
-			System.out.println("Employee is full time");
-			empHr=8;
-			break;
-
-			case 1:
-			System.out.println("part time employee");
-			empHr=4;
-			break;
-		}
-	}
+}
