@@ -33,14 +33,18 @@ class EmpUtil
 	public void checkAttendance(int attendance)
 	{
 		this.attendance = attendance;
-		if(this.attendance==0)
+		switch(this.attendance)
 		{
+			case 0:
 			System.out.println("Employee is present");
 			empDailyWage();
-		}
-		else
-		{
+			break;
+
+			case 1:
 			System.out.println("Employee is absent");
+			salary=0;
+			System.out.println("Employee wage is::"+salary);
+			break;
 		}
 	}
 	
@@ -60,15 +64,16 @@ class EmpUtil
 //method to find employee type
 	public void empType(int type)
 	{
-		if(type==0)
+		switch(type)
 		{
+			case 0:
 			System.out.println("Employee is full time");
 			empHr=8;
-		}
-		else
-		{
+			break;
+
+			case 1:
 			System.out.println("part time employee");
 			empHr=4;
+			break;
 		}
-	    }
 	}
