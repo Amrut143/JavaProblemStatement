@@ -1,3 +1,4 @@
+
 /**
 *Employee wage computation program
 *@author:Amrut
@@ -17,7 +18,7 @@ public class EmpWageComputation
 		attend=ran.nextInt(2);
 
 		//calling checkAttendance method
-		eu.checkAttendance(attend);
+	  	eu.checkAttendance(attend);
 	}
 }
 
@@ -25,6 +26,10 @@ public class EmpWageComputation
 class EmpUtil
 {
 	int attendance;
+	double salary;
+	final int wagePerHr=20;
+	int empHr;
+
 	//method to check employee attendance
 	public void checkAttendance(int attendance)
 	{
@@ -32,10 +37,19 @@ class EmpUtil
 		if(this.attendance==0)
 		{
 			System.out.println("Employee is present");
+			empDailyWage();
 		}
 		else
 		{
 			System.out.println("Employee is absent");
 		}
-	   }
 	}
+	
+	//method to calculate employee daily wage
+	public void empDailyWage()
+	{
+		empHr=8;
+		salary=wagePerHr*empHr;
+		System.out.println("Employee daily wage is::"+salary);
+	}
+}
