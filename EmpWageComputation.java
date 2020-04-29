@@ -1,4 +1,3 @@
-
 /**
 *Employee wage computation program
 *@author:Amrut
@@ -48,8 +47,28 @@ class EmpUtil
 	//method to calculate employee daily wage
 	public void empDailyWage()
 	{
-		empHr=8;
+		int status;
+		Random ran=new Random();
+		status=ran.nextInt(2);
+		//call emptype method
+		empType(status);;
 		salary=wagePerHr*empHr;
 		System.out.println("Employee daily wage is::"+salary);
+		
 	}
-}
+
+//method to find employee type
+	public void empType(int type)
+	{
+		if(type==0)
+		{
+			System.out.println("Employee is full time");
+			empHr=8;
+		}
+		else
+		{
+			System.out.println("part time employee");
+			empHr=4;
+		}
+	    }
+	}
