@@ -1,40 +1,54 @@
-import java.util.Random;
-/**
-*compute employee wage for multiple companies and manage them using array
+import java.util.*;
+
+/**compute employee wage for multiple company and manage them using arraylist
 *@author:Amrut
 */
-public class EmpWageComputation
+/*emp wage computation class that implements interface IComputeEmpWage*/
+public class EmpWageComputation implements IComputeEmpWage
 {
 	public static final int IS_PART_TIME=0;
 	public static final int IS_FULL_TIME=1;
 
 	private int numOfCompany=0;
+	/*define arraylist and map object*/
+	private ArrayList<CompanyEmpWage> companyEmpWageList;
+	private Map<String,CompanyEmpWage> companyEmpWageMap;
 
-	/*define array to store company employee wage*/
-	private CompanyEmpWage[] companyEmpWageArray;
-	/*define constructor to initialize array*/
 	public EmpWageComputation()
 	{
-		companyEmpWageArray=new CompanyEmpWage[5];
+		/*creating arraylist and map object to manage multiple company employee wage and retrieved according to company*/
+		companyEmpWageList=new ArrayList<>();
+		companyEmpWageMap=new HashMap<>();
 	}
-	/*method to add company employee wage*/
-	private void addCompanyEmpWage(String company, int empRatePerHr,
-									int numOfWorkingDays,int maxHrPerMonth)
+
+	/*method to add multiple company*/
+	public void addCompanyEmpWage(String company, int empRatePerHr, int numOfWorkingDays, int maxHrPerMonth)
 	{
-		companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company,empRatePerHr,numOfWorkingDays,maxHrPerMonth);
-		numOfCompany++;
+		//instantitate company employee wage class
+		CompanyEmpWage companyEmpWage=new CompanyEmpWage(company, empRatePerHr, numOfWorkingDays, maxHrPerMonth);
+		/*addind object in arraylist and map*/
+		companyEmpWageList.add(companyEmpWage);
+		companyEmpWageMap.put(company, companyEmpWage);
+		
 	}
-	/*method to compute employee wage for specified number of company*/
-	private void computeEmpWage()
+	public void computeEmpWage()
 	{
-		for (int i=0; i<numOfCompany; i++ )
+		for(int i=0; i<companyEmpWageList.size(); i++)
 		{
-			companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-			System.out.println(companyEmpWageArray[i]);
+			CompanyEmpWage companyEmpWage=companyEmpWageList.get(i);
+			companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
+			System.out.println(companyEmpWage);
 		}
 	}
-	/*method to compute employee wage*/
-	private int computeEmpWage(CompanyEmpWage companyEmpWage)
+
+	/*override method from companyempwage class to get total emp wage according to company*/
+	@Override
+		public int getTotalWage(String company)
+	{
+		return companyEmpWageMap.get(company).totalEmpWage;
+	}
+	/*mnethod to compute emp wage*/
+	public int computeEmpWage(CompanyEmpWage companyEmpWage)
 	{
 		//variables
 		int empHrs=0;
@@ -69,17 +83,20 @@ public class EmpWageComputation
 		}
 		return totalWorkingHrs * companyEmpWage.empRatePerHr;
 	}
-
 	public static void main(String[] args) 
 	{
-		/*instantiate empwage computation class*/
-		EmpWageComputation emp=new EmpWageComputation();
-		/*calling addCompanyEmpWage method for different companies*/
-		emp.addCompanyEmpWage("Dmart",20,2,10);
-		emp.addCompanyEmpWage("Relaince",10,4,20);
-		emp.addCompanyEmpWage("IBM",50,6,15);
-		/*call computeEmpwage method*/
-		emp.computeEmpWage();
+		/*instantiate EmpWageComputation class*/
+		IComputeEmpWage empWageComputation=new EmpWageComputation();
+		//calling addCompanyEmpWage method for different company
+		empWageComputation.addCompanyEmpWage("Dmart",20,2, 10);
+		empWageComputation.addCompanyEmpWage( "Relaince", 50, 4,20);
+		empWageComputation.addCompanyEmpWage( "Flipkart", 70, 6,10);
+		empWageComputation.addCompanyEmpWage( "IBM", 100, 5,15);
+		empWageComputation.addCompanyEmpWage( "Mindtree", 150, 4,10);
+		//calling computeEmpWage method
+		empWageComputation.computeEmpWage();
+		System.out.println("Total Wage for Dmart Company: "+empWageComputation.getTotalWage("Dmart"));
+		System.out.println("Total Wage for IBM Company: "+empWageComputation.getTotalWage("IBM"));
 	}
 }
 
