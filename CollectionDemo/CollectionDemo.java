@@ -79,6 +79,7 @@ public class CollectionDemo
 		System.out.println("After pop::"+s);
 		System.out.println("Use peek to return top of the stack without removal::"+s.peek());
 		System.out.println("find stack is empty or not::"+s.empty());
+		System.out.println();
 
 		//creating hashset object
 		HashSet<String> hs=new HashSet<String>(ll);
