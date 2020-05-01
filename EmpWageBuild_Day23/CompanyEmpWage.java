@@ -22,6 +22,7 @@ public class CompanyEmpWage
 		totalEmpWage=0;
 	}
 }
+/*method to set the total employee wage*/
 public void setTotalEmpWage(int totalEmpWage)
 	{
 		this.totalEmpWage=totalEmpWage;
