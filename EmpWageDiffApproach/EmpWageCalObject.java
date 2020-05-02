@@ -5,18 +5,18 @@
 import java.util.Random;
 public class EmpWageCalObject 
 {
-	//constants
+	
 	public static final int IS_PART_TIME=0;
 	public static final int IS_FULL_TIME=1;
 
-	//instance variables
+	/*instance variables*/
 	private final String company;
 	private final int empRatePerHr;
 	private final int numOfWorkingDays;
 	private final int maxHrPerMonth;
 
-	//constructor to initialize the instance variables
-	public EmpWageCalObject(String company, int empRatePerHr, int numOfWorkingDays, int maxHrPerMonth)
+	/*constructor to initialize the instance variables*/
+	public EmpWageCalObject( String company, int empRatePerHr, int numOfWorkingDays, int maxHrPerMonth)
 	{
 		this.company=company;
 		this.empRatePerHr=empRatePerHr;
