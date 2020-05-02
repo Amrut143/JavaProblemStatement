@@ -86,7 +86,7 @@ public class EmpWageComputation implements IComputeEmpWage
 	public static void main(String[] args) 
 	{
 		/*instantiate EmpWageComputation class*/
-		IComputeEmpWage empWageComputation=new EmpWageComputation();
+		final IComputeEmpWage empWageComputation=new EmpWageComputation();
 		//calling addCompanyEmpWage method for different company
 		empWageComputation.addCompanyEmpWage("Dmart",20,2, 10);
 		empWageComputation.addCompanyEmpWage( "Relaince", 50, 4,20);
