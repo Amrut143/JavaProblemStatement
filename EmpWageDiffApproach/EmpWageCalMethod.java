@@ -15,8 +15,8 @@ class EmpWage
 	private final int numOfWorkingDays;
 	private final int maxHrPerMonth;
 
-	//constructor to initialize the instance variables
-	public EmpWage(String company, int empRatePerHr, int numOfWorkingDays, int maxHrPerMonth)
+	/*constructor to initialize the instance variables*/
+	public EmpWage(final String company, final int empRatePerHr,final int numOfWorkingDays,final int maxHrPerMonth)
 	{
 		this.company=company;
 		this.empRatePerHr=empRatePerHr;
@@ -24,7 +24,7 @@ class EmpWage
 		this.maxHrPerMonth=maxHrPerMonth;
 	}
 
-	//method to calculate employee wages for different companies
+	/*method to calculate employee wages for different companies*/
 	public void calEmpWageForCompany()
 	{
 		//variables
@@ -33,7 +33,7 @@ class EmpWage
 		int totalWorkingDays=0;
 		int empCheck;
 
-		//computation of employee wage
+		/*computation of employee wage*/
 		while(totalWorkingHrs <= maxHrPerMonth && 
 			  totalWorkingDays < numOfWorkingDays)
 		{
@@ -70,16 +70,16 @@ public class EmpWageCalMethod
 	//maim method
 	public static void main(String[] args) 
 	{
-		// instantiate EmpWage class
-		EmpWage dmart=new EmpWage("Dmart", 100, 20, 10);
-		EmpWage flipkart=new EmpWage("Flipkart", 50, 15, 9);
-		EmpWage bigBasket=new EmpWage("BigBasket", 90, 25, 12);
+		/* instantiate EmpWage class*/
+		final EmpWage dmart=new EmpWage("Dmart", 100, 20, 10);
+		final EmpWage flipkart=new EmpWage("Flipkart", 50, 15, 9);
+		final EmpWage bigBasket=new EmpWage("BigBasket", 90, 25, 12);
 
-		//calling employee wage method for dmart
+		/*calling employee wage method for dmart*/
 		dmart.calEmpWageForCompany();
-		//calling employee wage method for flipkart
+		/*calling employee wage method for flipkart*/
 		flipkart.calEmpWageForCompany();
-		//calling employee wage method for bigbasket
+		/*calling employee wage method for bigbasket*/
 		bigBasket.calEmpWageForCompany();
 	}
 	
