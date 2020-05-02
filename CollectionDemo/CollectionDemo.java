@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -105,14 +106,24 @@ public class CollectionDemo
 
 		 TreeSet<String> set=new TreeSet<String>();
 		 System.out.println("*************************************************************");
-         set.add("Amrut");  
-         set.add("Vijay");  
-         set.add("Ajay");  
-         System.out.println("Traversing element through Iterator in descending order");  
-         Iterator i=set.descendingIterator();  
-         while(i.hasNext())  
+         	set.add("Amrut");  
+         	set.add("Vijay");  
+         	set.add("Ajay");  
+         	System.out.println("Traversing element through Iterator in descending order");  
+         	Iterator i=set.descendingIterator();  
+        	 while(i.hasNext())  
          {  
              System.out.println(i.next());  
-         }  
+         }
+		
+		//creating hashmap object
+		HashMap<Integer,String> hm=new HashMap<Integer,String>();    
+      		hm.put(100,"Amit");    
+      		hm.put(101,"Vijay");    
+      		hm.put(102,"Rahul");   
+      		System.out.println("Initial list of elements:"+hm);
+		hm.replace(102, "Gaurav");
+		System.out.println("After replacing 102 key value::"+hm);
+		
 	}
 }
