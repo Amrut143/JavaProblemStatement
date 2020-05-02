@@ -73,7 +73,7 @@ public class EmpWageComputation
 	public static void main(String[] args) 
 	{
 		/*instantiate empwage computation class*/
-		EmpWageComputation emp=new EmpWageComputation();
+		final EmpWageComputation emp=new EmpWageComputation();
 		/*calling addCompanyEmpWage method for different companies*/
 		emp.addCompanyEmpWage("Dmart",20,2,10);
 		emp.addCompanyEmpWage("Relaince",10,4,20);
